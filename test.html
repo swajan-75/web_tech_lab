@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<<<<<<< HEAD
-=======
     <link rel="stylesheet" href="aqi.css">
->>>>>>> 3f03949 (28_apr_table_AQI)
 </head>
 <body>
     <div style="
@@ -20,45 +17,6 @@
     </div>
     <div style="
         display: flex;
-<<<<<<< HEAD
-       height: 500px;
-       justify-content: center;
-        ">
-    <div style="background-color: blue; width: 800px;">
-        <div style="background-color: purple; color: aliceblue; 
-        height: 80%; ">
-        <div style="align-content: center;">
-            <h3 style="justify-self: center;">Registration form</h3>
-            <div style="display: block;">
-                <div style="margin: 20px;">
-                    <label for="">User Name : </label>
-                    <input type="text" placeholder="User Name " id="username">
-                </div>
-
-                <div style="margin: 20px;">
-                    <label for="">Email : </label>
-                    <input type="text" placeholder="Email " id="email">
-                </div>
-
-                <div style="margin: 20px;">
-                    <label for="">Password : </label>
-                    <input type="password" placeholder="Password" id="password">
-                </div>
-
-                <div style="margin: 20px;">
-                    <label for="">Confirm Password : </label>
-                    <input type="text" placeholder="Confirm Password " id="confirm_password">
-                </div>
-
-                <div style="margin: 20px;">
-                    <label for="">Date of Birth : </label>
-                    <input type="date"  id="dob">
-                </div>
-
-                <div style="margin: 20px;">
-                    <label for="">Country : </label>
-                    <select name="country" id="country">
-=======
        height: 550px;
        justify-content: center;
         ">
@@ -97,31 +55,12 @@
                     <td><label for="">Country : </label></td>
                     <td>:</td>
                     <td> <select name="country" id="country">
->>>>>>> 3f03949 (28_apr_table_AQI)
                         <option value="Bangladesh">Bangladesh</option>
                         <option value="USA">USA</option>
                         <option value="UK">UK</option>
                         <option value="UAE">UAE</option>
                         <option value="India">India</option>
                         <option value="Japan">Japan</option>
-<<<<<<< HEAD
-                    </select>
-                </div>
-
-                <div style="margin: 20px;">
-                    <label for="">Gender : </label>
-                    <input type="radio" name="gender" id="" value="male">
-                    <label for=""> Male</label>
-                    <input type="radio" name="gender" id="" value="female">
-                    <label for=""> female</label>
-                    <input type="radio" name="gender" id="" value="other">
-                    <label for=""> other</label>
-                </div>
-
-                <button style="margin: 20px;" onclick="valid()">Submit</button>
-                <label for="" id="error"></label>
-            </div>
-=======
                     </select></td>
                 </tr>
                 <tr>
@@ -146,18 +85,12 @@
 
                
                 
->>>>>>> 3f03949 (28_apr_table_AQI)
         
         
         </div>
         
 
     </div>
-<<<<<<< HEAD
-        <div>1.2</div>
-    </div>  
-    <div style="background-color: green; width: 200px;">2
-=======
     <div style="color: aliceblue;">
         <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
             <h3>Log in<h3>
@@ -231,16 +164,10 @@
             </tr>
         </table>
 
->>>>>>> 3f03949 (28_apr_table_AQI)
     </div>
     <script>
         
        
-<<<<<<< HEAD
-
-        function valid(){
-            var gender = document.querySelector('input[name="gender"]:checked');
-=======
         function is_name(name){
             //alert(name[0]);
             name = name.trim();
@@ -267,7 +194,6 @@
         }
         function valid(){
         var gender = document.querySelector('input[name="gender"]:checked');
->>>>>>> 3f03949 (28_apr_table_AQI)
         var user_name  = document.getElementById("username").value.trim();
         var email = document.getElementById("email").value.trim();
         var password = document.getElementById("password").value;
@@ -276,20 +202,14 @@
         var country = document.getElementById("country").value;
         var err = document.getElementById("error");
 
-<<<<<<< HEAD
-=======
         
 
->>>>>>> 3f03949 (28_apr_table_AQI)
         var msg = "";
 
         if (user_name === "") {
             msg = "User name cannot be empty.";
-<<<<<<< HEAD
-=======
         }else if(is_name(user_name)===false){
             msg ="Invalid name";
->>>>>>> 3f03949 (28_apr_table_AQI)
         }
 
 
@@ -301,11 +221,8 @@
 
         else if (password === "") {
             msg = "Password cannot be empty.";
-<<<<<<< HEAD
-=======
         }else if(password.length<8){
             msg ="Password length must be minimum 8."
->>>>>>> 3f03949 (28_apr_table_AQI)
         }
 
         else if (confirm_pass === "") {
@@ -316,11 +233,8 @@
 
         else if (dob === "") {
             msg = "Date of birth is required.";
-<<<<<<< HEAD
-=======
         }else if(is_date(dob)<18){
             msg ="Age Must be 18 ";
->>>>>>> 3f03949 (28_apr_table_AQI)
         }
 
         else if (country === "") {
