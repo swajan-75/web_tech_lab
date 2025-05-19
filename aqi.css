@@ -1,6 +1,19 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  }
+button{
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 60px;
+}
+input{
+    border: none;
+    
+}
 .data {
     margin-top: 30px;
-    border: 1px solid black;
+    border: 1px solid aliceblue;;
     border-collapse: collapse;
     width: 90%;
     height: 80%;
@@ -9,7 +22,7 @@
 .data td {
     align-content: center;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid aliceblue;;
     border-collapse: collapse;
     
 
@@ -18,17 +31,18 @@
 
 .data th {
     align-content: center;
-    border: 1px solid black;
+    border: 1px solid aliceblue;;
     border-collapse: collapse;
 }
 
 .data tr {
     
-    border: 1px solid black;
+    border: 1px solid aliceblue;;
     border-collapse: collapse;
 }
 
 .table_container {
+    color: aliceblue;
     background-color: green;
     width: 300px;
     display: flex;
