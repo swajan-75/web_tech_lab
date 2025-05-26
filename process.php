@@ -66,6 +66,9 @@
 </style>
 
 <body>
+     <a style="margin: 10px;text-decoration: none;" href="member1.php">Swajan Barua</a>
+    <a style="margin: 10px;text-decoration: none;" href="member2.php">Jannatul Hoque Samy</a>
+    
     <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
     <div class="container">
         <div >

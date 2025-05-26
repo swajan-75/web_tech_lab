@@ -10,6 +10,9 @@ session_start();
     <link rel="stylesheet" href="aqi.css">
 </head>
 <body>
+     <a style="margin: 10px;text-decoration: none;" href="member1.php">Swajan Barua</a>
+    <a style="margin: 10px;text-decoration: none;" href="member2.php">Jannatul Hoque Samy</a>
+    
    <?php 
    if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];

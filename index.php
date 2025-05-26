@@ -85,6 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //
 }
 </style>
 <body>
+    <a style="margin: 10px;color: green;text-decoration: none;" href="member1.php">Swajan Barua</a>
+    <a style="margin: 10px;color: green;text-decoration: none;" href="member2.php">Jannatul Hoque Samy</a>
     <div style="
     display: flex;
         justify-content: center;">
