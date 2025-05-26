@@ -1,22 +1,28 @@
+<?php
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>City Selector</title>
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-    </style>
+    <link rel="stylesheet" href="aqi.css">
 </head>
 <body>
+   <?php 
+   if(isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+       echo "
+        <div style='text-align: right; margin: 10px;'>
+        <a href=''>$username</a>
+        <a href='logout.php'>Logout</a>
+    </div>";
+   }
+   ?>
+    
     <form method="POST" action="show_aqi.php">
-        <table>
+        <table class="">
             <tr>
                 <th>City</th>
                 <th>Select</th>
@@ -43,8 +49,19 @@
             ?>
         </table>
         <br>
-        <input type="submit" value="Get Data">
+        <div style="text-align: center;">
+    <input class="btn"  type="submit" value="Get Data">
+</div>
     </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+        var checked_box = document.querySelectorAll('input[name="city[]"]:checked');
+            if (checked_box.length < 10) {
+                alert('Please select ' + (10 - checked_box.length) + ' more cities before submitting.');
+                event.preventDefault();
+                }
+        });
+</script>
 
 </body>
 </html>

@@ -1,11 +1,89 @@
+<?php
+    session_start();
+    
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { //
+        $login_user = $_POST['login_user'];
+        $login_password = $_POST['login_pass'];
+        $con = mysqli_connect("127.0.0.1:3399", "root", "", "aqi");
+
+            if (!$con) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+
+            $sql = "SELECT * FROM user WHERE username = '$login_user' AND password = '$login_password';";
+            $obj = mysqli_query($con, $sql);
+            if ($obj) {
+                $row = mysqli_fetch_assoc($obj);
+                    if ($row) {
+                        $fetched_username = addslashes($row['username']); 
+                        $fetched_password = addslashes($row['password']);
+                        /*
+                        $color = addslashes($row['color']);
+                        $_SESSION['color'] = $color;
+                        */
+                        $_SESSION['username'] = $fetched_username;
+                        header("Location: request_aqi.php"); 
+                        exit();
+                    } else {
+                        echo "<script>alert('invalid username or password');</script>";
+                        //$_SESSION['is_valid']= false;
+                        //header("Location: index.php");
+
+                        }
+            } else {
+                echo "alert('invalid username or password');";
+            }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="aqi.css">
+    
 </head>
+<style>
+    .data {
+    margin-top: 30px;
+    border: 1px solid aliceblue;;
+    border-collapse: collapse;
+    width: 90%;
+    height: 80%;
+}
+
+.data td {
+    align-content: center;
+    text-align: center;
+    border: 1px solid aliceblue;;
+    border-collapse: collapse;
+    
+
+
+}
+
+.data th {
+    align-content: center;
+    border: 1px solid aliceblue;;
+    border-collapse: collapse;
+}
+
+.data tr {
+    
+    border: 1px solid aliceblue;;
+    border-collapse: collapse;
+}
+
+.table_container {
+    color: aliceblue;
+    background-color: green;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
 <body>
     <div style="
     display: flex;
@@ -25,36 +103,37 @@
         height: 60%; ">
         <div style="align-content: center;">
             <h3 style="justify-self: center;">Registration form</h3>
+            <form method="post" action="process.php" onsubmit="return valid()">
             <table style="margin-left: 30px;" class="reg-form">
                 <tr>
                     <td> <label for="">User Name</label></td>
                     <td>:</td>
-                    <td> <input type="text" placeholder="User Name " id="username"></td>
+                    <td> <input type="text" placeholder="User Name " id="username" name="user_name"></td>
                 </tr>
                 <tr>
                     <td><label for="">Email</label></td>
                     <td>:</td>
-                    <td><input type="text" placeholder="Email " id="email"></td>
+                    <td><input type="text" placeholder="Email " id="email" name="email"></td>
                 </tr>
                 <tr>
                     <td><label for="">Password </label></td>
                     <td>:</td>
-                    <td><input type="password" placeholder="Password" id="password"></td>
+                    <td><input type="password" placeholder="Password" id="password" name="password"></td>
                 </tr>
                 <tr>
                     <td> <label for="">Confirm Password </label></td>
                     <td>:</td>
-                    <td> <input type="password" placeholder="Confirm Password " id="confirm_password"></td>
+                    <td> <input type="password" placeholder="Confirm Password " id="confirm_password" name="confirm_pass"></td>
                 </tr>
                 <tr>
                     <td><label for="">Date of Birth </label></td>
                     <td>:</td>
-                    <td><input type="date"  id="dob"></td>
+                    <td><input type="date" name="dob" id="dob"></td>
                 </tr>
                 <tr>
                     <td><label for="">Country : </label></td>
                     <td>:</td>
-                    <td> <select name="country" id="country">
+                    <td> <select name="country" id="country" name="country">
                         <option value="Bangladesh">Bangladesh</option>
                         <option value="USA">USA</option>
                         <option value="UK">UK</option>
@@ -63,6 +142,7 @@
                         <option value="Japan">Japan</option>
                     </select></td>
                 </tr>
+                
                 <tr>
                     <td><label for="">Gender</label></td>
                     <td>:</td>
@@ -74,13 +154,21 @@
                         <label for=""> other</label></td>
                 </tr>
                 <tr>
+                    <td><label for=""> Color</label></td>
+                    <td>:</td>
+                    <td><input type="color" name="color"></td>
+                </tr>
+                <tr>
                     <td></td>
-                    <td style="width: 100px;"> <button style="margin: 20px;align-self: center;" onclick="valid()">Submit</button>
+                    <td style="width: 100px;"> <input type="submit" style="margin: 20px;align-self: center;" value="submit"></input>
                        
                 </tr>
                 
             </table>
             <label  for="" id="error"></label>
+            <input type="hidden" name="form_name" value="f1">
+             </form>
+            
             
 
                
@@ -88,6 +176,7 @@
         
         
         </div>
+       
         
 
     </div>
@@ -95,22 +184,27 @@
         <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
             <h3>Log in<h3>
         </div >
+        <form method="post">
             <table style="display: flex; justify-content: center; align-items: center;">
                 
                 <tr>
                     <td>User Name </td>
                     <td>:</td>
-                    <td><input type="text" placeholder="User name"></td>
+                    <td><input type="text" placeholder="User name" name="login_user"></td>
                 </tr>
                 <tr>
                     <td>Password </td>
                     <td>:</td>
-                    <td><input type="password" placeholder="Password"></td>
+                    <td><input type="password" placeholder="Password" name="login_pass"></td>
                 </tr>
+                
             </table>
+            
             <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
-                <button >Log in</button>
+                <input type="submit" value="Login"  name="is_login"></input>
+               
             </div>
+            </form>
            
     </div>
     
@@ -252,11 +346,20 @@
             alert(msg);
             err.style.color = "green";
             err.innerText = msg;
-            return;
+           // return;
+           return true;
         }
 
         err.style.color = "red";
-        err.innerText = msg;        }
+        err.innerText = msg;   
+        //alert(msg);
+        if(msg===""){
+            return true;
+        }else{
+            return false;
+        }  
+         
+    }
 
     </script>
 </body>
