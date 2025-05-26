@@ -1,5 +1,9 @@
 <?php
 session_start(); 
+if(!isset($_SESSION['is_login'])){
+        echo "<script>alert('Login first')</script>";
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -13,15 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //
             $sql = "SELECT * FROM user WHERE username = '$login_user' AND password = '$login_password';";
             $obj = mysqli_query($con, $sql);
             if ($obj) {
-                $row = mysqli_fetch_assoc($obj);
-                    if ($row) {
-                        $fetched_username = addslashes($row['username']); 
-                        $fetched_password = addslashes($row['password']);
+                $row = mysqli_fetch_array($obj);
+                $count = mysqli_num_rows($obj);
+                    if ($count==1) {
+                        $user_name_ = $row['username']; 
+                        $user_pass_ = $row['password'];
+                        $_SESSION['is_login'] = true;
                         /*
-                        $color = addslashes($row['color']);
+                        $color = $row['color'];
                         $_SESSION['color'] = $color;
                         */
-                        $_SESSION['username'] = $fetched_username;
+                        $_SESSION['username'] = $user_name_;
                         header("Location: request_aqi.php"); 
                         exit();
                     } else {

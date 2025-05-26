@@ -1,5 +1,6 @@
 <?php
     session_start();
+   
    // echo "<script>alert('" . $_POST['confirm']) . "');</script>";
    $user_name = "";
 
